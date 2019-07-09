@@ -1,0 +1,31 @@
+{
+  "name": "headway-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "json-server": "^0.14.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BohdanK911/headway-server.git"
+  },
+  "keywords": [
+    "API",
+    "REST",
+    "server"
+  ],
+  "author": "Bohdan Kucheriavyi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BohdanK911/headway-server/issues"
+  },
+  "homepage": "https://github.com/BohdanK911/headway-server#readme",
+  "dependencies": {
+    "axios": "^0.19.0"
+  }
+}
