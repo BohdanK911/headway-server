@@ -4,8 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel lib -d dist",
+    "start": "npm run build && nodemon dist/server.js",
+    "serve": "node dist/server.js",
+    "test": "mocha --require @babel/register"
   },
   "dependencies": {
     "json-server": "^0.14.2",
@@ -25,5 +27,13 @@
   "bugs": {
     "url": "https://github.com/BohdanK911/headway-server/issues"
   },
-  "homepage": "https://headway-json.herokuapp.com/"
+  "homepage": "https://headway-json.herokuapp.com/",
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
+    "@babel/register": "^7.4.4",
+    "mocha": "^6.1.4",
+    "nodemon": "^1.19.1"
+  }
 }
