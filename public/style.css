@@ -2,11 +2,103 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background:
+    linear-gradient(0deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)) fixed,
+    url('./wallpaperLaptop.jpg') center top no-repeat fixed;
+  background-size: auto 100vh;
+  padding: 0.5em;
 }
 
 h1 {
-  font-family: sans-serif;
   text-transform: uppercase;
   text-align: center;
   margin: 30px auto;
+}
+
+table {
+  max-width: 650px;
+  width: 100%;
+  margin: 20px auto;
+  border: 1px solid #000;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+td {
+  padding: 1px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.btnWrapper {
+  margin: 8px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn {
+  min-width: 200px;
+  min-height: 40px;
+  margin: 0.5em;
+  background-color: #bbb;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: 1em;
+  }
+
+  table {
+    max-width: 800px;
+  }
+
+  td {
+    padding: 2px 3px;
+    font-size: 16px;
+  }
+
+  .btnWrapper {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  h1 {
+    font-size: 50px;
+  }
+
+  body {
+    background-size: 100% auto;
+  }
+
+  table {
+    max-width: 1000px;
+  }
+
+  th {
+    font-size: 18px;
+  }
+
+  td {
+    padding: 3px 4px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .btn {
+    font-size: 16px;
+  }
 }
