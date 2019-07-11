@@ -38,7 +38,7 @@
       let date = new Date;
       const updated = {
         name: prompt('Enter updated user\'s name:'),
-        tel: prompt('Enter updated user\'s phone:'),
+        phone: prompt('Enter updated user\'s phone:'),
         email: prompt('Enter updated user\'s email:'),
         date: date.toLocaleString('uk-UA')
       };
@@ -108,7 +108,7 @@
           const tdDate = document.createElement('td');
 
           tdName.textContent = user.name;
-          tdPhone.textContent = user.tel;
+          tdPhone.textContent = user.phone;
           tdEmail.textContent = user.email;
           tdDate.textContent = user.date;
 
