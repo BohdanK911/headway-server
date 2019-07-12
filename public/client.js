@@ -49,51 +49,53 @@ function remove() {
   }
 }
 
-(() => {
-  fetch(DB_URL)
-    .then(response => {
-      if (response.status === 200 || response.statusText === 'OK' || response.status === 200) {
-        return response.json();
-      } else {
-        alert(`SERVER ERROR!\nStatus code: ${response.status}`);
-      }
-    })
-    .then(data => {
-      const wrapper = document.getElementById('dbWrapper');
-      const table = document.createElement('table');
-      const thead = document.createElement('thead');
-      const tbody = document.createElement('tbody');
-      const trHead = document.createElement('tr');
-      const thName = document.createElement('th');
-      const thPhone = document.createElement('th');
-      const thEmail = document.createElement('th');
-      const thDate = document.createElement('th');
+if (prompt('Enter password: ') === 'admin') {
+  (() => {
+    fetch(DB_URL)
+      .then(response => {
+        if (response.status === 200 || response.statusText === 'OK' || response.status === 200) {
+          return response.json();
+        } else {
+          alert(`SERVER ERROR!\nStatus code: ${response.status}`);
+        }
+      })
+      .then(data => {
+        const wrapper = document.getElementById('dbWrapper');
+        const table = document.createElement('table');
+        const thead = document.createElement('thead');
+        const tbody = document.createElement('tbody');
+        const trHead = document.createElement('tr');
+        const thName = document.createElement('th');
+        const thPhone = document.createElement('th');
+        const thEmail = document.createElement('th');
+        const thDate = document.createElement('th');
 
-      thName.textContent = 'Name';
-      thPhone.textContent = 'Phone';
-      thEmail.textContent = 'E-mail';
-      thDate.textContent = 'Date';
+        thName.textContent = 'Name';
+        thPhone.textContent = 'Phone';
+        thEmail.textContent = 'E-mail';
+        thDate.textContent = 'Date';
 
-      thead.append(thName, thPhone, thEmail, thDate);
+        thead.append(thName, thPhone, thEmail, thDate);
 
-      data.map(user => {
-        const tr = document.createElement('tr');
-        const tdName = document.createElement('td');
-        const tdPhone = document.createElement('td');
-        const tdEmail = document.createElement('td');
-        const tdDate = document.createElement('td');
+        data.map(user => {
+          const tr = document.createElement('tr');
+          const tdName = document.createElement('td');
+          const tdPhone = document.createElement('td');
+          const tdEmail = document.createElement('td');
+          const tdDate = document.createElement('td');
 
-        tdName.textContent = user.name;
-        tdPhone.textContent = user.phone;
-        tdEmail.textContent = user.email;
-        tdDate.textContent = user.date;
+          tdName.textContent = user.name;
+          tdPhone.textContent = user.phone;
+          tdEmail.textContent = user.email;
+          tdDate.textContent = user.date;
 
-        tr.append(tdName, tdPhone, tdEmail, tdDate);
-        tbody.appendChild(tr);
-      });
+          tr.append(tdName, tdPhone, tdEmail, tdDate);
+          tbody.appendChild(tr);
+        });
 
-      table.append(thead, tbody);
-      wrapper.appendChild(table);
-    })
-    .catch(error => console.error(error));
-})();
+        table.append(thead, tbody);
+        wrapper.appendChild(table);
+      })
+      .catch(error => console.error(error));
+  })();
+}
