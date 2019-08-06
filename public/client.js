@@ -18,7 +18,6 @@ function update() {
       name: prompt("Enter updated user's name:"),
       phone: prompt("Enter updated user's phone:"),
       email: prompt("Enter updated user's email:"),
-      date: date.toLocaleString('uk-UA')
     };
 
     fetch(`${DB_URL}${id}`, {
