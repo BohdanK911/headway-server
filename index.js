@@ -15,12 +15,12 @@ app.use(
 app.use(bodyParser.json());
 
 // Connect to Mongoose and set connection variable
-// mongoose.connect('mongodb://localhost/resthub', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/resthub', { useNewUrlParser: true });
 
 // Heroku Mongoose connection
-mongoose.connect('mongodb://admin:headway1@ds259367.mlab.com:59367/heroku_7jctgxd1', {
-  useNewUrlParser: true
-});
+// mongoose.connect('mongodb://admin:headway1@ds259367.mlab.com:59367/heroku_7jctgxd1', {
+//   useNewUrlParser: true
+// });
 
 var db = mongoose.connection;
 

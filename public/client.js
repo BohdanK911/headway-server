@@ -77,7 +77,7 @@ if (prompt('Enter password: ') === 'admin') {
 
         thead.append(thName, thPhone, thEmail, thDate);
 
-        data.map(user => {
+        data.data.map(user => {
           const tr = document.createElement('tr');
           const tdName = document.createElement('td');
           const tdPhone = document.createElement('td');
