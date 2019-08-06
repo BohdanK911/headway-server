@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const path = require('path');
+const cors = require('cors');
 const app = express();
 
 const apiRoutes = require('./api-routes');
@@ -32,6 +32,8 @@ else console.log('DataBase connected successfully');
 // Setup server port
 const port = process.env.PORT || 8000;
 
+app.use(cors({ origin: '*', credentials: true }));
+
 // Send message for default URL
 app.use('/', express.static('public'));
 
@@ -39,8 +41,9 @@ app.use('/', express.static('public'));
 app.use('/api', apiRoutes);
 
 app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'http://headwayua.com/'); // update to match the domain you will make the request from
+  res.header('Access-Control-Allow-Origin', '*'); // update to match the domain you will make the request from
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   next();
 });
 
