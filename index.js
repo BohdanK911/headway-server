@@ -1,10 +1,10 @@
-let express = require('express');
-let bodyParser = require('body-parser');
-let mongoose = require('mongoose');
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const path = require('path');
-let app = express();
+const app = express();
 
-let apiRoutes = require('./api-routes');
+const apiRoutes = require('./api-routes');
 
 // Configure bodyparser to handle post requests
 app.use(
@@ -15,14 +15,14 @@ app.use(
 app.use(bodyParser.json());
 
 // Connect to Mongoose and set connection variable
-mongoose.connect('mongodb://localhost/resthub', { useNewUrlParser: true });
+// mongoose.connect('mongodb://localhost/resthub', { useNewUrlParser: true });
 
 // Heroku Mongoose connection
-// mongoose.connect('mongodb://admin:headway1@ds259367.mlab.com:59367/heroku_7jctgxd1', {
-//   useNewUrlParser: true
-// });
+mongoose.connect('mongodb://admin:headway1@ds259367.mlab.com:59367/heroku_7jctgxd1', {
+  useNewUrlParser: true
+});
 
-var db = mongoose.connection;
+const db = mongoose.connection;
 
 // Added check for DB connection
 
@@ -30,7 +30,7 @@ if (!db) console.log('Error connecting db');
 else console.log('DataBase connected successfully');
 
 // Setup server port
-var port = process.env.PORT || 8000;
+const port = process.env.PORT || 8000;
 
 // Send message for default URL
 app.use('/', express.static('public'));
