@@ -1,50 +1,25 @@
 {
-  "name": "headway-server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "name": "resthub2",
+  "version": "2.0.0",
+  "description": "A Node App demonstrating simple RESTFul API implementation",
+  "main": "index.js",
   "scripts": {
-    "build": "babel lib -d dist",
-    "start": "npm run build && nodemon dist/server.js",
-    "serve": "node dist/server.js"
-  },
-  "dependencies": {
-    "@babel/cli": "^7.5.0",
-    "@babel/core": "^7.5.4",
-    "@babel/preset-env": "^7.5.4",
-    "@babel/register": "^7.4.4",
-    "axios": "^0.19.0",
-    "basic-auth": "^2.0.1",
-    "dotenv": "^8.0.0",
-    "express-basic-auth": "^1.2.0",
-    "json-server": "^0.14.2",
-    "mocha": "^6.1.4",
-    "nodemon": "^1.19.1",
-    "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
-    "tsscmp": "^1.0.6"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/BohdanK911/headway-server.git"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "keywords": [
     "API",
-    "REST",
-    "server"
+    "resful",
+    "json",
+    "node",
+    "mongodb",
+    "express"
   ],
-  "author": "Bohdan Kucheriavyi",
+  "author": "David Inyang-Etoh",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/BohdanK911/headway-server/issues"
-  },
-  "homepage": "https://headway-json.herokuapp.com/",
-  "devDependencies": {
-    "@babel/cli": "^7.5.0",
-    "@babel/core": "^7.5.4",
-    "@babel/preset-env": "^7.5.4",
-    "@babel/register": "^7.4.4",
-    "mocha": "^6.1.4",
-    "nodemon": "^1.19.1"
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.6.4"
   }
 }

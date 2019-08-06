@@ -3,7 +3,7 @@
 const reloadBtn = document.getElementById('reload');
 const updateBtn = document.getElementById('update');
 const deleteBtn = document.getElementById('delete');
-const DB_URL = window.location.href + 'registeredUsers_308b1b02d690/';
+const DB_URL = window.location.href + 'api/registeredUsers_308b1b02d690/';
 
 reloadBtn.addEventListener('click', () => document.location.reload(true));
 updateBtn.addEventListener('click', update);
