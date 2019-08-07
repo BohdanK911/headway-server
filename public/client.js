@@ -17,7 +17,7 @@ function update() {
     const updated = {
       name: prompt("Enter updated user's name:"),
       phone: prompt("Enter updated user's phone:"),
-      email: prompt("Enter updated user's email:"),
+      email: prompt("Enter updated user's email:")
     };
 
     fetch(`${DB_URL}${id}`, {

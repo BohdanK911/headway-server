@@ -47,7 +47,7 @@ exports.view = function(req, res) {
 };
 // Handle update contact info
 exports.update = function(req, res) {
-  Contact.findById(req.params.id, function(err, user) {
+  User.findById(req.params.id, function(err, user) {
     if (err) res.send(err);
     user.name = req.body.name ? req.body.name : contact.name;
     user.gender = req.body.gender;
@@ -65,7 +65,7 @@ exports.update = function(req, res) {
 };
 // Handle delete contact
 exports.delete = function(req, res) {
-  Contact.remove(
+  User.remove(
     {
       _id: req.params.id
     },
