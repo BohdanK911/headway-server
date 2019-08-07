@@ -1,5 +1,6 @@
 // contactModel.js
 const mongoose = require('mongoose');
+const date = new Date().toLocaleString('uk-UA').toString();
 
 // Setup schema
 const userSchema = mongoose.Schema({
@@ -14,8 +15,8 @@ const userSchema = mongoose.Schema({
   phone: String,
   date: {
     type: String,
-    required: false
-    // default: new Date().toLocaleString('uk-UA')
+    required: false,
+    default: date
   }
 });
 // Export Contact model
