@@ -16,10 +16,7 @@ const userSchema = mongoose.Schema({
   date: {
     type: String,
     required: false,
-    default: () =>
-      moment()
-        .tz('Europe/Kiev')
-        .format('DD.MM.YYYY, HH:mm:ss')
+    default: () => moment().format('DD.MM.YYYY, HH:mm:ss')
   }
 });
 // Export Contact model
