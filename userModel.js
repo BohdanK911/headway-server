@@ -1,7 +1,6 @@
 // contactModel.js
 const mongoose = require('mongoose');
 const moment = require('moment');
-const now = moment();
 
 // Setup schema
 const userSchema = mongoose.Schema({
@@ -17,7 +16,10 @@ const userSchema = mongoose.Schema({
   date: {
     type: String,
     required: false,
-    default: () => moment().format('dddd, MMMM Do YYYY, h:mm:ss a')
+    default: () =>
+      moment()
+        .tz('Europe/Kiev')
+        .format('DD.MM.YYYY, HH:mm:ss')
   }
 });
 // Export Contact model
