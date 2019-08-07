@@ -14,8 +14,8 @@ const userSchema = mongoose.Schema({
   phone: String,
   date: {
     type: String,
-    required: false,
-    default: new Date().toLocaleString('uk-UA')
+    required: false
+    // default: new Date().toLocaleString('uk-UA')
   }
 });
 // Export Contact model
