@@ -20,8 +20,7 @@ exports.index = function(req, res) {
 // Handle create contact actions
 exports.new = function(req, res) {
   const user = new User();
-  user.name = req.body.name ? req.body.name : contact.name;
-  user.gender = req.body.gender;
+  user.name = req.body.name ? req.body.name : user.name;
   user.email = req.body.email;
   user.phone = req.body.phone;
   // save the contact and check for errors
@@ -37,7 +36,8 @@ exports.new = function(req, res) {
 };
 // Handle view contact info
 exports.view = function(req, res) {
-  User.findById(req.params.contact_id, function(err, user) {
+  console.log(req.params);
+  User.findById(req.params.id, function(err, user) {
     if (err) res.send(err);
     res.json({
       message: 'User details loading...',
@@ -47,7 +47,7 @@ exports.view = function(req, res) {
 };
 // Handle update contact info
 exports.update = function(req, res) {
-  Contact.findById(req.params.user_id, function(err, user) {
+  Contact.findById(req.params.id, function(err, user) {
     if (err) res.send(err);
     user.name = req.body.name ? req.body.name : contact.name;
     user.gender = req.body.gender;
@@ -67,7 +67,7 @@ exports.update = function(req, res) {
 exports.delete = function(req, res) {
   Contact.remove(
     {
-      _id: req.params.user_id
+      _id: req.params.id
     },
     function(err, user) {
       if (err) res.send(err);

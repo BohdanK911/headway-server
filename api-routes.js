@@ -18,7 +18,7 @@ router
   .post(userController.new);
 
 router
-  .route('/registeredUsers_308b1b02d690/:_id')
+  .route('/registeredUsers_308b1b02d690/:id')
   .get(userController.view)
   .patch(userController.update)
   .put(userController.update)
