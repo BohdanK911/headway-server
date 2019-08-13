@@ -1,4 +1,5 @@
 const express = require('express');
+const http = require('http');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -51,3 +52,7 @@ app.use(function(req, res, next) {
 app.listen(port, function() {
   console.log('Running server on port ' + port);
 });
+
+const httpGet = url => http.get(url);
+
+setInterval(httpGet('http://headway-json.herokuapp.com'), 300000);
