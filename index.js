@@ -55,4 +55,4 @@ app.listen(port, function() {
 
 const httpGet = url => http.get(url);
 
-setInterval(httpGet('http://headway-json.herokuapp.com'), 300000);
+setInterval(() => httpGet('http://headway-json.herokuapp.com'), 300000);
