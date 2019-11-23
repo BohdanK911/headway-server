@@ -1,9 +1,9 @@
 'use strict';
 
-const reloadBtn = document.getElementById('reload');
-const updateBtn = document.getElementById('update');
-const deleteBtn = document.getElementById('delete');
-const DB_URL = window.location.href + 'api/registeredUsers_308b1b02d690/';
+const reloadBtn = document.getElementById('reload'),
+updateBtn = document.getElementById('update'),
+deleteBtn = document.getElementById('delete'),
+DB_URL = window.location.href + 'api/registeredUsers_308b1b02d690/';
 
 reloadBtn.addEventListener('click', () => document.location.reload(true));
 updateBtn.addEventListener('click', update);
@@ -49,10 +49,11 @@ function remove() {
 }
 
 if (prompt('Enter password: ') === 'admin') {
+  console.log(process.env.PASSWORD);
   (() => {
     fetch(DB_URL)
       .then(response => {
-        if (response.status === 200 || response.statusText === 'OK' || response.status === 200) {
+        if (response.status === 200 || response.statusText === 'OK') {
           return response.json();
         } else {
           alert(`SERVER ERROR!\nStatus code: ${response.status}`);

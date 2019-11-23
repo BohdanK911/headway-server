@@ -1,25 +1,17 @@
 {
-  "name": "resthub2",
+  "name": "headway-server",
   "version": "2.0.0",
-  "description": "A Node App demonstrating simple RESTFul API implementation",
-  "main": "index.js",
+  "main": "index.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.min.js"
   },
-  "keywords": [
-    "API",
-    "resful",
-    "json",
-    "node",
-    "mongodb",
-    "express"
-  ],
-  "author": "David Inyang-Etoh",
+  "author": "Bohdan Kucheriavyi",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.26",
