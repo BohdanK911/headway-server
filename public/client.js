@@ -1,19 +1,38 @@
 'use strict';
 
 const reloadBtn = document.getElementById('reload'),
+btnWrapper = document.querySelector('.btnWrapper'),
 updateBtn = document.getElementById('update'),
 deleteBtn = document.getElementById('delete'),
 DB_URL = window.location.href + 'api/registeredUsers_308b1b02d690/';
 
-reloadBtn.addEventListener('click', () => document.location.reload(true));
-updateBtn.addEventListener('click', update);
-deleteBtn.addEventListener('click', remove);
+btnWrapper.addEventListener('click', ({target}) => {
+  switch (target.id) {
+    case 'reload':
+      start();
+      break;
+
+    case 'reload':
+      start();
+      break;
+
+    case 'update':
+      update();
+      break;
+
+    case 'delete':
+      remove();
+      break;
+
+    default:
+      break;
+  }
+});
 
 function update() {
   const id = prompt('Enter user ID to change user data: ');
 
   if (id !== null && id !== '') {
-    let date = new Date();
     const updated = {
       name: prompt("Enter updated user's name:"),
       phone: prompt("Enter updated user's phone:"),
@@ -30,7 +49,7 @@ function update() {
       .then(response => response.json())
       .catch(error => console.error(error));
   } else {
-    alert('aborted');
+    alert('Aborted');
   }
 }
 
@@ -48,54 +67,52 @@ function remove() {
   }
 }
 
-if (prompt('Enter password: ') === 'admin') {
-  console.log(process.env.PASSWORD);
-  (() => {
-    fetch(DB_URL)
-      .then(response => {
-        if (response.status === 200 || response.statusText === 'OK') {
-          return response.json();
-        } else {
-          alert(`SERVER ERROR!\nStatus code: ${response.status}`);
-        }
-      })
-      .then(data => {
-        const wrapper = document.getElementById('dbWrapper');
-        const table = document.createElement('table');
-        const thead = document.createElement('thead');
-        const tbody = document.createElement('tbody');
-        const trHead = document.createElement('tr');
-        const thName = document.createElement('th');
-        const thPhone = document.createElement('th');
-        const thEmail = document.createElement('th');
-        const thDate = document.createElement('th');
+const start = () => {
+  fetch(DB_URL)
+    .then(response => {
+      if (response.status === 200 || response.statusText === 'OK') return response.json();
+      else alert(`SERVER ERROR!\nStatus code: ${response.status}`);
+    })
+    .then(({data}) => {
+      const wrapper = document.getElementById('dbWrapper'),
+      table = document.createElement('table'),
+      thead = document.createElement('thead'),
+      tbody = document.createElement('tbody'),
+      trHead = document.createElement('tr'),
+      thName = document.createElement('th'),
+      thPhone = document.createElement('th'),
+      thEmail = document.createElement('th'),
+      thDate = document.createElement('th');
 
-        thName.textContent = 'Name';
-        thPhone.textContent = 'Phone';
-        thEmail.textContent = 'E-mail';
-        thDate.textContent = 'Date';
+      thName.textContent = 'Name';
+      thPhone.textContent = 'Phone';
+      thEmail.textContent = 'E-mail';
+      thDate.textContent = 'Date';
 
-        thead.append(thName, thPhone, thEmail, thDate);
+      trHead.append(thName, thPhone, thEmail, thDate);
+      thead.appendChild(trHead);
 
-        data.data.map(user => {
-          const tr = document.createElement('tr');
-          const tdName = document.createElement('td');
-          const tdPhone = document.createElement('td');
-          const tdEmail = document.createElement('td');
-          const tdDate = document.createElement('td');
+      data.map(user => {
+        const tr = document.createElement('tr');
+        const tdName = document.createElement('td');
+        const tdPhone = document.createElement('td');
+        const tdEmail = document.createElement('td');
+        const tdDate = document.createElement('td');
 
-          tdName.textContent = user.name;
-          tdPhone.textContent = user.phone;
-          tdEmail.textContent = user.email;
-          tdDate.textContent = user.date;
+        tdName.textContent = user.name;
+        tdPhone.textContent = user.phone;
+        tdEmail.textContent = user.email;
+        tdDate.textContent = user.date;
 
-          tr.append(tdName, tdPhone, tdEmail, tdDate);
-          tbody.appendChild(tr);
-        });
+        tr.append(tdName, tdPhone, tdEmail, tdDate);
+        tbody.appendChild(tr);
+      });
 
-        table.append(thead, tbody);
-        wrapper.appendChild(table);
-      })
-      .catch(error => console.error(error));
-  })();
-}
+      wrapper.innerHTML = '';
+      table.append(thead, tbody);
+      wrapper.appendChild(table);
+    })
+    .catch(error => alert(error));
+};
+
+if (md5(prompt('Enter password: ')) === '9c1d280824f1ac3ad798f60004437586') start();

@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
 
+const { port, db_uri } = require('./config');
 const apiRoutes = require('./api-routes');
 
 // Configure bodyparser to handle post requests
@@ -15,23 +16,15 @@ app.use(
 );
 app.use(bodyParser.json());
 
-// Connect to Mongoose and set connection variable
-// mongoose.connect('mongodb://localhost/resthub', { useNewUrlParser: true });
-
 // Heroku Mongoose connection
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(db_uri, {
   useNewUrlParser: true
 });
 
 const db = mongoose.connection;
 
 // Added check for DB connection
-
-if (!db) console.log('Error connecting db');
-else console.log('DataBase connected successfully');
-
-// Setup server port
-const port = process.env.PORT || 8000;
+!db ? console.error('Error connecting db') : console.log('DB connected successfully');
 
 app.use(cors({ origin: '*', credentials: true }));
 
@@ -42,14 +35,14 @@ app.use('/', express.static('public'));
 app.use('/api', apiRoutes);
 
 app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*'); // update to match the domain you will make the request from
+  res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   next();
 });
 
 // Launch app to listen to specified port
-app.listen(port, function() {
+app.listen(port || 8000, function() {
   console.log('Running server on port ' + port);
 });
 
